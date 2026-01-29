@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.Timer;
 
 /** Add your docs here. */
 public class FuelProjectile {
-
   private final Pose3d startPose;
   private final double vX;
   private final double vY;

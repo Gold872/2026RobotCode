@@ -17,7 +17,6 @@ import frc.robot.subsystems.Swerve;
 import frc.robot.subsystems.Turret;
 
 public class SOTMCalculator {
-
   public static InterpolatingTreeMap<Double, Rotation2d> hoodAngleMap =
       new InterpolatingTreeMap<>(InverseInterpolator.forDouble(), Rotation2d::interpolate);
   public static InterpolatingDoubleTreeMap shooterSpeedMap = new InterpolatingDoubleTreeMap();
@@ -99,12 +98,16 @@ public class SOTMCalculator {
     SmartDashboard.putNumber("SOTM/distance", distance);
 
     // for (int i = 0; i < 5; i++) {
-    double offsetX = timeOfFlight * (turretVelocityX 
-    // + fieldAccelX * accelTime.in(Seconds) TS IS BROKEN BRO
-    );
-    double offsetY = timeOfFlight * (turretVelocityY 
-    // + fieldAccelY * accelTime.in(Seconds) ACCELERATION DOES NOT WORK
-    );
+    double offsetX =
+        timeOfFlight
+            * (turretVelocityX
+            // + fieldAccelX * accelTime.in(Seconds) TS IS BROKEN BRO
+            );
+    double offsetY =
+        timeOfFlight
+            * (turretVelocityY
+            // + fieldAccelY * accelTime.in(Seconds) ACCELERATION DOES NOT WORK
+            );
 
     lookAheadPosition = targetPose.getTranslation().minus(new Translation2d(offsetX, offsetY));
 

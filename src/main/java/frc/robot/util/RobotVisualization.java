@@ -61,7 +61,6 @@ public class RobotVisualization {
   }
 
   public void shootFuelOTM(ShootingParameters shootingParameters) {
-
     Pose3d robotPose = new Pose3d(swerve.getRobotPose());
 
     ChassisSpeeds robotRelative = swerve.getChassisSpeeds();
