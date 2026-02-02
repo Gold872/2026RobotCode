@@ -90,7 +90,6 @@ public class SOTMCalculator {
       double fieldAccelX,
       double fieldAccelY,
       ChassisSpeeds fieldChassisSpeeds) {
-
     Pose2d targetPose = target;
 
     Pose2d robotPose = swerve.getRobotPose();

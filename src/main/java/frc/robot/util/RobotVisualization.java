@@ -163,7 +163,6 @@ public class RobotVisualization {
   }
 
   public void shootFuel(ShootingParameters shootingParameters) {
-
     if (fuelStored < 1) return;
 
     fuelStored--;
