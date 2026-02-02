@@ -438,7 +438,6 @@ public class Swerve extends TunerSwerveDrivetrain implements Subsystem {
     if (arducamFuelDistCoeffs.isEmpty()) {
       arducamFuelDistCoeffs = arducamFuel.getDistCoeffs();
     }
-
     updateVisionPoseEstimates();
     updateFuelRotation();
 
@@ -869,6 +868,10 @@ public class Swerve extends TunerSwerveDrivetrain implements Subsystem {
 
   public ChassisSpeeds getChassisSpeeds() {
     return stateCache.Speeds;
+  }
+
+  public ChassisSpeeds getFieldSpeeds() {
+    return ChassisSpeeds.fromRobotRelativeSpeeds(getChassisSpeeds(), getRotation());
   }
 
   @Logged(name = "Rotation")
