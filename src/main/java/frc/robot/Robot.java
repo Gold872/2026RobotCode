@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Seconds;
+
 import com.ctre.phoenix6.SignalLogger;
 import com.pathplanner.lib.commands.PathfindingCommand;
 import edu.wpi.first.epilogue.Epilogue;
@@ -17,8 +19,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.WPILibVersion;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.util.AllianceUtil;
 import frc.robot.util.FuelSim;
+import frc.robot.util.HubTracker;
 import frc.robot.util.LogUtil;
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
@@ -118,7 +120,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Voltage", RobotController.getBatteryVoltage());
     SmartDashboard.putNumber("Match Time", DriverStation.getMatchTime());
 
-    SmartDashboard.putNumber("Time Until Shift", AllianceUtil.timeUntilShift());
+    SmartDashboard.putNumber(
+        "Time Until Shift",
+        HubTracker.timeRemainingInCurrentShift().orElse(Seconds.of(0)).in(Seconds));
 
     double codeRuntime = (Timer.getFPGATimestamp() - startTime) * 1000.0;
     SmartDashboard.putNumber("Code Runtime (ms)", codeRuntime);
