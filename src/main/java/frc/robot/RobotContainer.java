@@ -16,6 +16,7 @@ import edu.wpi.first.epilogue.Logged;
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -105,6 +106,8 @@ public class RobotContainer {
   private final FuelSim fuelInstance = FuelSim.getInstance();
 
   private final SwerveTelemetry swerveTelemetry = new SwerveTelemetry();
+
+  private final PowerDistribution powerDistribution = new PowerDistribution();
 
   private Debouncer kickerLaserDebouncer = new Debouncer(2.0);
 
@@ -248,6 +251,8 @@ public class RobotContainer {
     if (RobotBase.isSimulation()) {
       configureFuelSim();
     }
+
+    SmartDashboard.putData("Power Distribution", powerDistribution);
 
     SmartDashboard.putData(
         "Set Arm Down", intake.runOnce(() -> intake.setArmMaxPosition()).ignoringDisable(true));
